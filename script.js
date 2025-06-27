@@ -50,9 +50,6 @@ shadeMode.onclick = () => {
   eraser.classList.remove("selected");
   rainbowMode.classList.remove("selected");
   shadeMode.classList.add("selected");
-  [...grid.children].forEach((child) => {
-    child.style.opacity = 0;
-  });
 };
 eraser.onclick = () => {
   currentMode = "eraser";
@@ -64,7 +61,7 @@ eraser.onclick = () => {
 clear.onclick = () => {
   [...grid.children].forEach((child) => {
     child.style.backgroundColor = "azure";
-    child.style.opacity = 0;
+    child.style.removeProperty("opacity");
   });
 };
 grid.addEventListener("mouseover", filling);
@@ -80,7 +77,7 @@ function filling(e) {
       e.target.style.opacity = shadecount;
     } else if (currentMode === "eraser") {
       e.target.style.backgroundColor = "azure";
-      e.target.style.opacity = 0;
+      e.target.style.opacity = "0";
     }
   }
 }
